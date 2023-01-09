@@ -47,27 +47,64 @@ auto diffMinMax(const std::vector<std::vector<int>>& data) -> int {
     return sum;
 }
 
+template <typename T>
+struct combinations {
+    struct iterator {
+        using value_type = std::pair<T, T>;
+        std::vector<T>::const_iterator x;
+        std::vector<T>::const_iterator y;
+        std::vector<T>::const_iterator b;
+        std::vector<T>::const_iterator e;
+
+        bool operator!=(const typename combinations<T>::iterator &j) {
+            return (x != j.x) || (y != j.y);
+        }
+
+        combinations<T>::iterator operator++() {
+            ++y;
+            if (x == y) {
+                ++y;
+            }
+            if (y == e) {
+                y = b;
+                ++x;
+            }
+            return *this;
+        }
+
+        value_type operator*() const {
+            return {*x, *y};
+        }
+    };
+
+    const iterator i;
+
+    combinations(const std::vector<T> &v)
+    : i({v.cbegin(), ++v.cbegin(), v.cbegin(), v.cend()})
+    {};
+
+    iterator begin() {
+        return i;
+    }
+
+    iterator end() {
+        return {i.e, i.e, i.b, i.e};
+    }
+};
+
 auto evenDivide(const std::vector<std::vector<int>> &data) -> int {
     int sum = 0;
     for (const auto &line: data) {
         bool found = false;
-        for (size_t x = 0; x < line.size(); ++x) {
-            for (size_t y = 0; y < line.size(); ++y) {
-                if (x == y) {
-                    continue;
-                }
-                std::cout << "x:\t" << line[x] << "\ty:\t" << line[y];
-                if (line[x] % line[y] == 0) {
-                    sum += line[x] / line[y];
-                    found = true;
-                    std::cout << "\tDIVIDE!\n";
-                    break;
-                }
-                std::cout << "\tNOPE\n";
-            }
-            if (found) {
+        for (auto [x,y]: combinations(line)) {
+            std::cout << "x:\t" << x << "\ty:\t" << y;
+            if (x % y == 0) {
+                sum += x / y;
+                found = true;
+                std::cout << "\tDIVIDE!\n";
                 break;
             }
+            std::cout << "\tNOPE\n";
         }
         if (!found) {
             std::cerr << "Did not find evenly dividing values in line!\n";
