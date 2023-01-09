@@ -1,4 +1,4 @@
-#include "day01.hpp"
+#include "day01.h"
 #include <ranges>
 #include <iostream>
 

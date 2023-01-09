@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "aocpp.h"
-#include "day01.hpp"
+#include "day01.h"
+#include "day02.h"
 
 void help() {
     std::cout << "Run with day parameter: aocpp 01" << std::endl;
@@ -28,8 +29,8 @@ int main(int argc, char **argv) {
                 main01(input);
                 return 0;
             case 02:
-                // pass
-                return 1;
+                main02(input);
+                return 0;
             default:
                 help();
                 return 1;

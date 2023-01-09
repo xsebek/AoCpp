@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../src/day01.hpp"
+#include "../src/day01.h"
 
 TEST(Day01, trivial) {
 		EXPECT_TRUE(true);
