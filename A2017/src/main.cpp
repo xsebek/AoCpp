@@ -4,11 +4,11 @@
 
 int main() {
     aocpp();
-		try {
-		    main01(std::cin);
-		} catch (const std::exception& e) {
-				std::cerr << e.what() << std::endl;
-				return 1;
-		}
-		return 0;
+    try {
+        main01(std::cin);
+    } catch (const std::exception& e) {
+            std::cerr << e.what() << std::endl;
+            return 1;
+    }
+    return 0;
 }
