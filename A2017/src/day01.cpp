@@ -14,7 +14,7 @@ auto parse01(std::istream &input) -> std::vector<int> {
         // std::cout << c;
         data.push_back(c - '0');
     }
-    std::cout << std::endl;
+    // std::cout << std::endl;
     return data;
 }
 
