@@ -4,6 +4,7 @@ project(aocpp CXX)
 ###########################################################
 # LIBRARY
 ###########################################################
+find_package(fmt REQUIRED)
 
 file(GLOB DAYS_SOURCE
     CONFIGURE_DEPENDS
@@ -15,6 +16,8 @@ add_library(aoclib
 		STATIC
 		${DAYS_SOURCE}
 )
+
+target_link_libraries(aoclib PRIVATE fmt::fmt)
 
 ###########################################################
 # BINARY

@@ -3,6 +3,7 @@
 #include "aocpp.h"
 #include "day01.h"
 #include "day02.h"
+#include "day03.h"
 
 void help() {
     std::cout << "Run with day parameter: aocpp 01" << std::endl;
@@ -30,6 +31,9 @@ int main(int argc, char **argv) {
                 return 0;
             case 02:
                 main02(input);
+                return 0;
+            case 03:
+                main03(input);
                 return 0;
             default:
                 help();
