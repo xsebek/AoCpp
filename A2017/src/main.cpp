@@ -4,6 +4,7 @@
 #include "day01.h"
 #include "day02.h"
 #include "day03.h"
+#include "day04.h"
 
 void help() {
     std::cout << "Run with day parameter: aocpp 01" << std::endl;
@@ -25,19 +26,18 @@ int main(int argc, char **argv) {
     auto day = std::strtoul(argv[1], nullptr, 10);
     try {
         auto input = std::ifstream(std::string("../input/2017/") + argv[1] + ".txt");
-        switch (day) {
-            case 01:
-                main01(input);
-                return 0;
-            case 02:
-                main02(input);
-                return 0;
-            case 03:
-                main03(input);
-                return 0;
-            default:
-                help();
-                return 1;
+        auto days = std::vector{
+            main01,
+            main02,
+            main03,
+            main04,
+        };
+        if (day <= days.size()) {
+            days[day - 1](input);
+            return 0;
+        } else {
+            help();
+            return 1;
         }
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
