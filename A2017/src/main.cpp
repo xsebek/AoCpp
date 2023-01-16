@@ -6,6 +6,7 @@
 #include "day03.h"
 #include "day04.h"
 #include "day05.h"
+#include "day06.h"
 
 void help() {
     std::cout << "Run with day parameter: aocpp 01" << std::endl;
@@ -28,11 +29,12 @@ int main(int argc, char **argv) {
     try {
         auto input = std::ifstream(std::string("../input/2017/") + argv[1] + ".txt");
         auto days = std::vector{
-            main01,
-            main02,
-            main03,
-            main04,
-            main05,
+                main01,
+                main02,
+                main03,
+                main04,
+                main05,
+                day06::main,
         };
         if (day <= days.size()) {
             days[day - 1](input);
