@@ -5,6 +5,7 @@ project(aocpp CXX)
 # LIBRARY
 ###########################################################
 find_package(fmt REQUIRED)
+find_package(lexy REQUIRED)
 
 file(GLOB DAYS_SOURCE
     CONFIGURE_DEPENDS
@@ -17,7 +18,7 @@ add_library(aoclib
 		${DAYS_SOURCE}
 )
 
-target_link_libraries(aoclib PRIVATE fmt::fmt)
+target_link_libraries(aoclib PRIVATE fmt::fmt foonathan::lexy)
 
 ###########################################################
 # BINARY
