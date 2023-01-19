@@ -13,8 +13,10 @@ struct Program {
     std::string name;
     int weight;
     std::vector<std::string> above;
-    /// added parent in part 1
+    // added parent in part 1
     std::string below;
+    // added sum of child weight in part 2
+    int child_weight = 0;
 
     constexpr Program(std::string name, int weight, std::optional<std::vector<std::string>> above=std::nullopt)
             : name(std::move(name))
@@ -30,7 +32,7 @@ auto parse(const std::string &input) -> std::vector<Program>;
 
 auto solve1(const std::vector<Program> &data) -> std::string;
 
-// auto solve2(std::vector<Program> data) -> int;
+auto solve2(const std::vector<Program> &data) -> int;
 
 } // namespace day07
 #endif //AOCPP_DAY07_H

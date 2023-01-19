@@ -36,6 +36,6 @@ TEST(Day07, part1) {
     EXPECT_EQ(day07::solve1(day07::parse(input)), "tknk");
 }
 
-// TEST(Day07, part2) {
-//     EXPECT_EQ(day07::solve2({0,2,7,0}), 4);
-// }
+TEST(Day07, part2) {
+    EXPECT_EQ(day07::solve2(day07::parse(input)), 60);
+}
