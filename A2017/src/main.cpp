@@ -8,6 +8,7 @@
 #include "day05.h"
 #include "day06.h"
 #include "day07.h"
+#include "day08.h"
 
 void help() {
     std::cout << "Run with day parameter: aocpp 01" << std::endl;
@@ -37,6 +38,7 @@ int main(int argc, char **argv) {
                 main05,
                 day06::main,
                 day07::main,
+                day08::main,
         };
         if (day <= days.size()) {
             days[day - 1](input);
